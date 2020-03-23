@@ -1,4 +1,5 @@
 from collections import defaultdict
+import itertools
 from typing import (
     Dict,
     List,
@@ -32,7 +33,7 @@ class Relevance:
         # Note that "keys()" and "values()" are guaranteed to be in the same order.
         vectors = vectorizer.fit_transform(self._corpus.values())
 
-        # Apply TF-IDF transform to the words counts. This scales down the impack of words that occur frequently
+        # Apply TF-IDF transform to the word counts. This scales down the relevance of words that occur frequently
         # throughout the entire corpus.
         #   https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html
         #   https://en.wikipedia.org/wiki/Tf–idf
@@ -51,8 +52,7 @@ class Relevance:
 
         # Select the most relevant words (ones with the highest TF-IDF score) for each shop.
         shop2words = defaultdict(list)
-        for i, shop_id in enumerate(self._corpus.keys()):
-            for j in range(num_words):
-                word = idx2word[vectors_tf_idf_argsort[i, j]]
-                shop2words[shop_id].append(word)
+        for (i, shop_id), j in itertools.product(enumerate(self._corpus.keys()), range(num_words)):
+            word = idx2word[vectors_tf_idf_argsort[i, j]]
+            shop2words[shop_id].append(word)
         return shop2words
