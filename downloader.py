@@ -48,7 +48,6 @@ class ShopListingsDownloader:
 
         return listings
 
-
     def _get_active_listings_for_page(self, page: int) -> Dict[str, Any]:
         '''Returns all active listings for the specified page as JSON.'''
         uri = self._get_active_listings_uri(page)
