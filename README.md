@@ -1,7 +1,7 @@
 # EtsyAnalyzer
 This program downloads shop listings from Etsy and computes the most relevant terms for each shop.
 
-It has been tested with Python 3.7.4 only.
+It has been tested with Python 3.6.9 and 3.7.4 only.
 
 To ensure you have necessary packages installed run
 ```
@@ -18,3 +18,5 @@ You can run the test with
 ```
 python test_relevance.py
 ```
+
+Note: You may need to substitute `pip3` for `pip` and `python3` for `python` on some systems.
