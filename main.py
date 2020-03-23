@@ -7,10 +7,6 @@ from downloader import ShopListingsDownloader
 from relevance import Relevance
 
 
-# This prevents the following error when printing to stdout:
-#   UnicodeEncodeError: 'charmap' codec can't encode characters in position 1-2: character maps to <undefined>
-sys.stdout.reconfigure(encoding='utf-8')
-
 # We download listings from these shops.
 ETSY_SHOP_IDS = frozenset({
     'ArtisticAnyaDesigns',  # 78 listings
